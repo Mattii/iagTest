@@ -44,7 +44,7 @@
               class="mx-3"
               src="/astronomy-balckhole-galaxy-hole-planet-universe-svgrepo-com.svg"
             ></v-img>
-            <a href="/"> {{compayName}} </a>
+            <a class="gugi" href="/"> {{compayName}} </a>
           </template>
 
           <v-spacer></v-spacer>
@@ -81,23 +81,9 @@
         <v-main>
           <v-container flex>
 
-            <v-row no-gutters>
-              <v-col cols="12" sm="8" class="d-flex justify-center align-center py-16 my-16">
-                <v-card elevation="0" class="ma-2 pa-6">
-                  <div>
-                  <h1 class="text-h2">
-                    Empowering Data Immortality
-                  </h1>
-                  <p class="text-h4">
-                    Harnessing Cosmic Forces for Eternal Data Security
-                  </p>
-                  <v-btn variant="outlined" @click="ping">Send a probe</v-btn>
-                </div>
-                </v-card>
-              </v-col>
-
-              <v-col cols="12" sm="4" class="d-flex justify-center align-center">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 446.204 446.204" xml:space="preserve" fill="#000000">
+            <v-row no-gutters class="d-flex px-6 px-xl-16"  color="black">
+              <v-col cols="12" sm="5" class="order-sm-2 d-flex justify-center align-center">
+                <svg version="1.1" class="px-xl-16" width="100%" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 446.204 446.204" xml:space="preserve" fill="#000000">
 
                   <g id="SVGRepo_bgCarrier" stroke-width="0"/>
                   
@@ -107,42 +93,54 @@
                   
                   </svg>
                   </v-col>
-              </v-row>
+              <v-col cols="12" sm="7" class=" d-flex justify-center align-center pb-3 mb-3 py-sm-12 my-sm-12 py-lg-16 my-lg-16">
+                <v-card elevation="0" class="ma-2 pa-sm-6">
+                  <div>
+                  <h1 class="gugi text-h5 text-sm-h4 text-lg-h2 text-xl-h1 pb-1 pb-lg-6">
+                    Empowering Data Immortality
+                  </h1>
+                  <p class="text-h7 text-sm-h6 text-lg-h5 text-xl-h4 pb-2 pb-sm-6">
+                    Harnessing Cosmic Forces for Eternal Data Security
+                  </p>
+                  <v-btn variant="outlined" class="gugi" @click="ping">Sent a probe</v-btn>
+                </div>
+                </v-card>
+              </v-col>
 
+
+              </v-row>
+            </v-container >
+              <v-container style="background-color:#333;" flex>
             <v-row no-gutters>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="3" >
                 <v-card class="ma-2 pa-6">
                   <v-card-text>{{ pingMes }}</v-card-text>
                   <v-card-actions>
-                    <v-btn variant="outlined" @click="ping">ping</v-btn>
+                    <v-btn class="gugi" variant="outlined" @click="ping">ping</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
 
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="9" >
                 <v-card class="ma-2 pa-6">
                   <v-card-text>{{ testMes }}</v-card-text>
                   <v-card-actions>
-                    <v-btn variant="outlined" @click="test">test</v-btn>
+                    <v-btn class="gugi" variant="outlined" @click="test">test</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
 
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="6">
                 <v-card class="ma-2 pa-6">
                   <v-card-text>{{ listMes }}</v-card-text>
                   <v-card-actions>
-                    <v-btn variant="outlined" @click="list">list</v-btn>
+                    <v-btn class="gugi" variant="outlined" @click="list">list</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
 
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="6">
                 <v-card class="ma-2 pa-6">
-                  <v-img
-                    class="pa-6"
-                    src="/antenna-astronomy-radar-satellite-space-svgrepo-com.svg"
-                  ></v-img>
                   <v-card-text>{{ uplMes }}</v-card-text>
                   <v-text-field
                     v-model="uploadeFilename"
@@ -158,16 +156,13 @@
                     label="File input"
                   ></v-file-input>
                   <v-card-actions>
-                    <v-btn variant="outlined" class="mr-3">upload</v-btn>
+                    <v-btn variant="outlined" class="mr-3 gugi">upload</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
 
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="6">
                 <v-card class="ma-2 pa-6">
-                  <v-img
-                    src="/atmosfer-comet-falling-star-fireball-meteoroid-svgrepo-com.svg"
-                  ></v-img>
                   <v-card-text>{{ dowMes }}</v-card-text>
                   <v-text-field
                     v-model="filename"
@@ -178,11 +173,12 @@
                   <v-card-actions>
                     <v-btn
                       variant="outlined"
-                      class="mr-3"
+                      class="mr-3 gugi"
                       @click="downloadSingelFile"
                       >find</v-btn
                     >
                     <v-btn
+                    class="gugi"
                       variant="outlined"
                       v-show="downloadURL"
                       :href="downloadURL"
@@ -193,7 +189,7 @@
                 </v-card>
               </v-col>
 
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="6" >
                 <v-card class="ma-2 pa-6">
                   <v-card-text>{{ delMes }}</v-card-text>
                   <v-text-field
@@ -203,7 +199,7 @@
                     variant="underlined"
                   ></v-text-field>
                   <v-card-actions>
-                    <v-btn variant="outlined" @click="delFile">delete</v-btn>
+                    <v-btn class="gugi" variant="outlined" @click="delFile">delete</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-col>
@@ -222,15 +218,25 @@
       setup() {
         const compayName = ref("GravityValut Solutions");
         const walletIdDialogtoogle = ref(false);
+        const id = ref("");
+
+        const regMes = ref({});
 
         const pingMes = ref({});
+
         const testMes = ref({});
+
         const listMes = ref({});
+
         const dowMes = ref({});
+
         const delMes = ref({});
+
         const uplMes = ref("");
+
         const downloadURL = ref("");
-        const id = ref("");
+
+
         const filename = ref("");
         const delFilename = ref("");
         const uploadeFilename = ref("");
@@ -331,6 +337,7 @@
           filename,
           delFilename,
           uploadeFilename,
+          regMes,
           pingMes,
           testMes,
           listMes,
@@ -353,8 +360,12 @@
     app.mount("#app");
   </script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
     * {
       text-decoration: none !important;
+    }
+    .gugi{
+      font-family: 'Gugi', cursive !important;
     }
   </style>
 </html>
