@@ -102,7 +102,162 @@
                   <p class="text-h7 text-sm-h6 text-lg-h5 text-xl-h4 pb-2 pb-sm-6">
                     Harnessing Cosmic Forces for Eternal Data Security
                   </p>
-                  <v-btn variant="outlined" class="gugi" @click="ping">Sent a probe</v-btn>
+                  <v-dialog v-model="probeSendToogle" class="ma-lg-16" width="auto">
+                    <template v-slot:activator="{ props }">
+                      <v-btn class="gugi" variant="outlined" v-bind="props">
+                        Send a probe
+                      </v-btn>
+                    </template>
+        
+                    <v-card class="pa-sm-12">
+                      <v-card-text>
+                        <v-row>
+                          <v-col cols="12" md="6">
+                            <h1 class="gugi text-h5 text-sm-h4 mb-3">At {{ compayName }}, we offer an unparalleled opportunity to secure your data in the gravitational embrace of black holes.</h1>
+                            <p class="text-h7">As your data probe settles into its black hole orbit, it will establish secure communication channels with our decentralized storage network. Utilizing state-of-the-art encryption protocols, your data will be transmitted with the highest level of privacy and protection.</p>
+                          </v-col>
+                        </v-row>
+                        <v-row>
+                          <v-col>
+                          <v-form @submit.prevent>
+                          <v-row>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.cpu"
+                              variant="outlined"
+                              label="CPU"
+                              type="text"
+                              disabled
+                              hint="CPU of the node"
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.read"
+                              variant="outlined"
+                              label="Read"
+                              type="text"
+                              disabled
+                              suffix="kb"
+                              hint="File read speed per second."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.write"
+                              variant="outlined"
+                              label="Write"
+                              type="text"
+                              disabled
+                              suffix="kb"
+                              hint="File write speed per second."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.storage"
+                              variant="outlined"
+                              label="Storage type"
+                              type="text"
+                              disabled
+                              hint="This is the storage type of a node."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.hostname"
+                              variant="outlined"
+                              label="Hostname"
+                              type="text"
+                              disabled
+                              hint="This is the IP address of the device if it will be hosted on the server like EC2 server."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.port"
+                              variant="outlined"
+                              label="Port"
+                              type="number"
+                              hint="This is the Port that is used to run the API for uploading and downloading files from the device."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.url"
+                              variant="outlined"
+                              label="Url"
+                              type="text"
+                              disabled
+                              hint="This is the tunneling url to access the API of the node. This is generated programmatically."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.city"
+                              variant="outlined"
+                              label="Country"
+                              type="text"
+                              hint="Country location of the Node."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.country"
+                              variant="outlined"
+                              label="City"
+                              type="text"
+                              hint="City location of the Node."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings['storage_capacity']"
+                              variant="outlined"
+                              label="Storage capacity"
+                              type="text"
+                              disabled
+                              hint="Storage of the device."
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings['storage_path']"
+                              variant="outlined"
+                              label="Storage path"
+                              type="text"
+                              hint="File storage path for the uploaded files"
+                            ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" md="4">
+                              <v-text-field
+                              v-model="regConfigurationSetings.ram"
+                              variant="outlined"
+                              label="RAM"
+                              type="text"
+                              disabled
+                              hint="RAM of the node"
+                            ></v-text-field>
+                            </v-col>
+                          </v-row>
+                          <v-row>
+                            <v-col>
+                              <v-btn variant="outlined" class="gugi mr-3" type="submit" @click="registerNode">Send Probe</v-btn>
+                              <v-btn
+                                variant="outlined" 
+                                class="gugi"
+                                @click="probeSendToogle = false"
+                                >Cancel Mission</v-btn
+                              >
+                            </v-col>
+                          </v-row>
+                        </v-form>
+                      </v-col>
+                    </v-row>
+                    </v-card-text>
+                    </v-card>
+                  </v-dialog>
+
                 </div>
                 </v-card>
               </v-col>
@@ -218,6 +373,7 @@
       setup() {
         const compayName = ref("GravityValut Solutions");
         const walletIdDialogtoogle = ref(false);
+        const probeSendToogle = ref(false);
         const id = ref("");
 
         const regMes = ref({});
@@ -240,6 +396,63 @@
         const filename = ref("");
         const delFilename = ref("");
         const uploadeFilename = ref("");
+
+
+        const regConfigurationSetings = ref({
+                    "cpu": "i9",
+                    "read": "500kb",
+                    "write": "400kb",
+                    "storage": "ssd",
+                    "hostname": "127.0.0.1",
+                    "port": 5001,
+                    "url": "http://localhost:5001",
+                    "city": "kathmandu",
+                    "country": "Nepal",
+                    "storage_capacity": 500,
+                    "storage_path": "c://user/ipfs",
+                    "ram": "i9"
+                })
+
+        const registerNode = async () => {
+
+// curl -X 'POST' \
+//   'https://da.iagon.com/api/v1/register/node' \
+//   -H 'accept: application/json' \
+//   -H 'Content-Type: application/json' \
+//   -d '{
+//   "cpu": "i9",
+//   "read": "500kb",
+//   "write": "400kb",
+//   "storage": "ssd",
+//   "hostname": "127.0.0.1",
+//   "port": 5001,
+//   "url": "https://tunnel.iagon.com",
+//   "city": "kathmandu",
+//   "country": "Nepal",
+//   "storage_capacity": 500,
+//   "storage_path": "c://user/Asus",
+//   "ram": "i9"
+// }' 
+// 
+          
+          try {
+              const res = await fetch('https://da.iagon.com/api/v1/register/node', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+                },
+                body: JSON.stringify(regConfigurationSetings.value)
+              }).then(res => res.json());
+              console.log(res);
+              if (!res.success) {
+                throw(res)
+              }
+              localStorage.setItem("registerNodeConfig", JSON.stringify(res));
+          } catch (error) {
+            console.error(error);
+          }
+        }
 
         const ping = async () => {
           const res = await fetch(
@@ -334,9 +547,11 @@
         return {
           compayName,
           walletIdDialogtoogle,
+          probeSendToogle,
           filename,
           delFilename,
           uploadeFilename,
+          regConfigurationSetings,
           regMes,
           pingMes,
           testMes,
@@ -347,6 +562,7 @@
           downloadURL,
           test,
           id,
+          registerNode,
           downloadSingelFile,
           uploadSingelFile,
           ping,
